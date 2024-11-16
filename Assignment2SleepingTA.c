@@ -64,7 +64,7 @@ int main( int argc, char* argv[])
 
     free(Students);
     pthread_mutex_destroy(&chair_mutex);
-    sem_destroy(TA_sleep);
+    sem_destroy(&TA_sleep);
     sem_destroy(&Chair_available);
     sem_destroy(&TA_available);
     sem_destroy(&NextStudent);
@@ -97,7 +97,7 @@ void* TA_Activity(void* args)
 
 void* Student_Activity(void* threadID)
 {
-    int id =((int *)threadID);
+    int id = *((int *)threadID);
     free(threadID);
 
     //For sitting in Waiting Room 
